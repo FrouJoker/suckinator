@@ -35,7 +35,4 @@ else
 			chmod -R 777 ~/suckinator
 			suckinator
 		fi
-	else
-		
-	fi
 fi
