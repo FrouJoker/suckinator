@@ -14,7 +14,7 @@ then
 	pkg install python
 	pkg install dos2unix
 	pip install requests colorama proxyscrape
-	cp ~/spymer/suckinator.py /data/data/com.termux/files/usr/bin/suckinator
+	cp ~/suckinator/suckinator.py /data/data/com.termux/files/usr/bin/suckinator
 	dos2unix /data/data/com.termux/files/usr/bin/suckinator
 	chmod -R 777 ~/suckinator
 	chmod 777 /data/data/com.termux/files/usr/bin/suckinator
