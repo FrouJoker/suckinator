@@ -34,5 +34,4 @@ else
 			chmod 777 /usr/bin/suckinator
 			chmod -R 777 ~/suckinator
 			suckinator
-		fi
-fi
+	else
