@@ -687,6 +687,14 @@ def MAIN():
 				print(logo)
 				print("\nЧто хочешь?")
 
+				#text1 = "И снова здравствуйте"
+				#text2 = "Мы по тебе скучали"
+				#text3 = "С возвращением"
+				#text4 = "Группа крови , на рукаве!"
+				#text = randon.randomint(text1,text2,text3,text4)
+				#print("-" + text)
+				
+
 			def checkspamlist():
 				global phone
 				global info
@@ -811,7 +819,7 @@ def MAIN():
 									info = Fore.RED+"\nНомер телефона находится в антиспам листе."+Style.RESET_ALL
 								elif int(id)==0:
 									addparams()
-									info = '\nЖертва: {}\Жёсткость: {}'.format(phone, count)+'\nВеселье началось!\nЕсли хочешь остановить - нажмите Ctrl+Z.'
+									info = '\nЖертва: {}\nЖёсткость: {}'.format(phone, count)+'\nВеселье началось!\nЕсли хочешь остановить - нажмите Ctrl+Z.'
 									clear()
 									logo()
 									print(info)
