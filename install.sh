@@ -5,9 +5,9 @@ echo "|  Представься     |"
 echo "|------------------|"
 echo "| 1. Termux        |"
 echo "| 2. Другой Unix   |"
-echo "| 3. iSH           |"
 echo "|                  |"
-echo "| Введите 1/2/3:   |"
+echo "|                  |"
+echo "|  Введите 1/2:    |"
 echo "--------------------"
 read numb
 if [ $numb = "1" ]
