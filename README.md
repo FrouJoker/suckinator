@@ -46,3 +46,4 @@ PATH NOTE :
 
 V1 - Realease
 V1.1 - Added proxy change
+V1.2 - Fixed some paragraphs
