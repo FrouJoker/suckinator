@@ -9,8 +9,8 @@ HOW TO INSTALL :
            WINDOWS
 
 1. Install Python 3.8 (IMPORTANT! - set checkbox add to PATH) 
----
 2. Run suckinator.exe
+---
 
            LINUX
 
