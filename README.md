@@ -42,7 +42,7 @@ Suckinator run auto , but if no - go to main dir and write "suckinator"
 ---
 
 
-PATH NOTE :
+PATCH NOTE :
 
 V1 - Realease
 V1.1 - Added proxy change
