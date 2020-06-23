@@ -683,7 +683,7 @@ def MAIN():
 					info=Back.RED+"\nВерсия устарела и нуждается в обновлении!"+Style.RESET_ALL
 
 			def logo():
-				logo = Fore.RED + " ███████████████████████████████████████████ \n █───█────█────█─█─███──█────█─██─█───█────█ \n █─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n █───█────█─██─█─█─████─█─██─█──███───█────█ \n █─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n █─███─█─██────█───█────█────█─██─█───█─█─██ \n ███████████████████v.1.2███████████████████ "+Style.RESET_ALL
+				logo = Fore.RED + " ███████████████████████████████████████████ \n █───█────█────█─█─███──█────█─██─█───█────█ \n █─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n █───█────█─██─█─█─████─█─██─█──███───█────█ \n █─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n █─███─█─██────█───█────█────█─██─█───█─█─██ \n ███████████████████v.1.3███████████████████ "+Style.RESET_ALL
 				print(logo)
 				print("\nЧто хочешь?")
 
@@ -786,7 +786,7 @@ def MAIN():
 			def update():
 				a=input("Вы уверены, что хотите обновить? (y/n) ")
 				if a=="y":
-					os.system("cd && rm -rf ~/spymer && git clone https://github.com/FSystem88/spymer && sh ~/spymer/install.sh")
+					os.system("cd && rm -rf ~/suckinator && git clone https://github.com/FrouJoker/suckinator && sh ~/suckinator/install.sh")
 					exit()
 				else:
 					print("Отменено")
@@ -1001,8 +1001,8 @@ def MAIN():
 					print("Proxy: "+Fore.BLUE+"{}".format(proxy)+Style.RESET_ALL)
 					print(Fore.GREEN + "1)То что тебе нужно)")
 					print(Fore.WHITE + "2) Обновить прокси.")
-				#	print("5) Обновить SPYMER.")
-					print(Fore.RED + "3) Выход.")
+					print(Fore.WHITE + "3) Обновить Suckinator.")
+					print(Fore.RED + "4) Выход.")
 					input1 = input(Fore.BLUE+"Введите номер пункта: "+Style.RESET_ALL)
 					if input1 == "1":
 						clear()
@@ -1022,7 +1022,7 @@ def MAIN():
 						else:
 							print("Некорректно")
 					
-					elif input1 == "4":
+					elif input1 == "5":
 						checkspamlist()
 
 					elif input1 == "6":
@@ -1042,10 +1042,10 @@ def MAIN():
 						elif input51=="3":
 							generateproxy()
 
-					elif input1 == "5":
+					elif input1 == "3":
 						update()
 					
-					elif input1 == "3":
+					elif input1 == "4":
 						print (Fore.GREEN+"\nДавай пока)\n"+Style.RESET_ALL)
 						exit()
 
