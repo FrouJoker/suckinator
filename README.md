@@ -1,4 +1,4 @@
-# uckinator
+# Suckinator
 its simple SMS bomber
 
 Working in : Russia , weakly in Ukraine and Belarus
