@@ -683,7 +683,7 @@ def MAIN():
 					info=Back.RED+"\nВерсия устарела и нуждается в обновлении!"+Style.RESET_ALL
 
 			def logo():
-				logo = "████████████████████████████████████████████ \n █───█────█────█─█─███──█────█─██─█───█────█ \n █─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n █───█────█─██─█─█─████─█─██─█──███───█────█ \n █─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n █─███─█─██────█───█────█────█─██─█───█─█─██ \n ███████████████████v.1█████████████████████ "+Style.RESET_ALL
+				logo = Fore.RED + " ███████████████████████████████████████████ \n █───█────█────█─█─███──█────█─██─█───█────█ \n █─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n █───█────█─██─█─█─████─█─██─█──███───█────█ \n █─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n █─███─█─██────█───█────█────█─██─█───█─█─██ \n ███████████████████v.1.1███████████████████ "+Style.RESET_ALL
 				print(logo)
 				print("\nЧто хочешь?")
 
@@ -707,7 +707,7 @@ def MAIN():
 				global phone
 				global info
 
-				print ("Кого нагнём , босс?:")
+				print ("Введите номер:")
 				phone = input(Fore.BLUE+"spymer > "+Style.RESET_ALL)
 				make7phone()
 				try:
@@ -775,6 +775,14 @@ def MAIN():
 					password = name + random.choice(list('123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'))
 					email = "{}@gmail.com".format(name)
 
+			def update():
+				a=input("Вы уверены, что хотите обновить? (y/n) ")
+				if a=="y":
+					os.system("cd && rm -rf ~/spymer && git clone https://github.com/FSystem88/spymer && sh ~/spymer/install.sh")
+					exit()
+				else:
+					print("Отменено")
+
 			def onesend():
 				global phone
 				global name
@@ -787,12 +795,12 @@ def MAIN():
 				clear()
 				logo()
 				print(info)
-				print('Введите телефон ("Enter" - отмена):')
-				phone = input(Fore.BLUE+"spymer > "+Style.RESET_ALL)
+				print('Кого сегодня?: ("Enter" - отмена):')
+				phone = input(Fore.BLUE+"suckinator > "+Style.RESET_ALL)
 				try:
 					if int(phone):
-						print('Насколько жестко?("Enter" - отмена):')
-						count = input(Fore.BLUE+"spymer > "+Style.RESET_ALL)
+						print('Насколько жёстко?(от 1 до 250) ("Enter" - отмена):')
+						count = input(Fore.BLUE+"suckinator > "+Style.RESET_ALL)
 						try:
 							if int(count):
 								count=int(count)
@@ -803,11 +811,11 @@ def MAIN():
 									info = Fore.RED+"\nНомер телефона находится в антиспам листе."+Style.RESET_ALL
 								elif int(id)==0:
 									addparams()
-									info = '\nНомерок: {}\nКол-во кругов: {}'.format(phone, count)+'\nСпамер запущен.\nЕсли хочешь остановить - нажмите Ctrl+Z.'
+									info = '\nЖертва: {}\Жёсткость: {}'.format(phone, count)+'\nВеселье началось!\nЕсли хочешь остановить - нажмите Ctrl+Z.'
 									clear()
 									logo()
 									print(info)
-									if proxy=="та какая разница":
+									if proxy=="localhost":
 										proxies=None
 									else:
 										proxies={ssl:proxy}
@@ -816,7 +824,7 @@ def MAIN():
 										sms()
 										iteration+=1
 										print("{} круг пройден.".format(iteration))
-									info = Fore.BLUE+"\nГотово.\nТелефон: {}\nКол-во кругов: {}".format(phone, iteration)+Style.RESET_ALL
+									info = Fore.BLUE+"\Он в ярости!.\nТелефон: {}\nЖесткость: {}".format(phone, iteration)+Style.RESET_ALL
 						except:
 							info=Fore.RED+"Неверно введено кол-во кругов"+Style.RESET_ALL
 				except:
@@ -836,7 +844,7 @@ def MAIN():
 				print(info)
 				print("Введите путь к файлу: ")
 				print("(Папка с файлом должна находиться в домашней дирректории!)")
-				f_name=input(Fore.BLUE+"spymer > "+Style.RESET_ALL+"~/")
+				f_name=input(Fore.BLUE+"suckinator > "+Style.RESET_ALL+"~/")
 				clear()
 				logo()
 				print(info)
@@ -846,9 +854,9 @@ def MAIN():
 					array=file.read().splitlines()
 					if array[-1] == '':
 						array.pop()
-					print("Файл найден.\nНомерочки:\n{}".format(array))
-					print('Насколько жестко?: ("Enter" - отмена):')
-					count = input(Fore.BLUE+"spymer > "+Style.RESET_ALL)
+					print("Файл найден.\Жертвы:\n{}".format(array))
+					print('Введите жёсткость ("Enter" - отмена):')
+					count = input(Fore.BLUE+"suckinator > "+Style.RESET_ALL)
 					try:
 						if int(count):
 							count=int(count)
@@ -865,9 +873,11 @@ def MAIN():
 								try:
 									if int(phone):
 										id=requests.post('https://fsystem88.ru/spymer/json.php', data={'phone': phone}).json()["id"]
-										
-									if int(id)==0:
-											print('\nЗапущен спам на {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(phone))
+										if int(id) > 0:
+											print(Fore.RED+"\nНомер телефона {} находится в антиспам листе.".format(phone)+Style.RESET_ALL)
+											exit()
+										elif int(id)==0:
+											print('\nВеселье началось: {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(phone))
 											thread_list = []
 											t = threading.Thread (target=n_send, args=(phone,count, proxies))
 											thread_list.append(t)
@@ -880,7 +890,7 @@ def MAIN():
 					except:
 						info = Fore.RED+"\nНекорректно введено количество кругов!"+Style.RESET_ALL
 
-					print(Fore.BLUE+"\nГотово.\nФайл: {}\nКол-во кругов: {}".format(f_name, count)+Style.RESET_ALL)
+					print(Fore.BLUE+"\nГотово.\nФайл: {}\nЖесткость: {}".format(f_name, count)+Style.RESET_ALL)
 					exit()
 				except FileNotFoundError:
 					info=Fore.RED+"\nФайл {} не найден".format(f_name)+Style.RESET_ALL
@@ -933,9 +943,11 @@ def MAIN():
 									try:
 										if int(phone):
 											id=requests.post('https://fsystem88.ru/spymer/json.php', data={'phone': phone}).json()["id"]
-											
-										if int(id)==0:
-												print('\n Мы берем на абордаж : {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(phone))
+											if int(id) > 0:
+												print(Fore.RED+"\nНомер телефона {} находится в антиспам листе.".format(phone)+Style.RESET_ALL)
+												exit()
+											elif int(id)==0:
+												print('\nЗапущен спам на {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(phone))
 												thread_list = []
 												t = threading.Thread (target=n_send, args=(phone,count, proxies))
 												thread_list.append(t)
@@ -961,8 +973,8 @@ def MAIN():
 					addparams()
 					sms()
 					iteration+=1
-					print(Fore.GREEN+"{}".format(phone)+Style.RESET_ALL+": этап №{} пройден.".format(iteration))
-				print(Fore.GREEN+"\nЧеловечек с номером {} взбешен. Жесткость {}".format(phone, count)+Style.RESET_ALL)
+					print(Fore.GREEN+"{}".format(phone)+Style.RESET_ALL+": круг №{} пройден.".format(iteration))
+				print(Fore.GREEN+"\nСпам на {} закончен. Кол-во кругов {}".format(phone, count)+Style.RESET_ALL)
 				exit()
 			
 			def main():
@@ -979,8 +991,10 @@ def MAIN():
 					print(info)
 					checkver()
 					print("Proxy: "+Fore.BLUE+"{}".format(proxy)+Style.RESET_ALL)
-					print("1) То что тебе нужно).")
-					print("2) Выход.")
+					print(Fore.GREEN + "1)То что тебе нужно)")
+					print(Fore.WHITE + "2) Обновить прокси.")
+				#	print("5) Обновить SPYMER.")
+					print(Fore.RED + "3) Выход.")
 					input1 = input(Fore.BLUE+"Введите номер пункта: "+Style.RESET_ALL)
 					if input1 == "1":
 						clear()
@@ -989,23 +1003,24 @@ def MAIN():
 						print("Выберите один вариант:")
 						print("1. Запустить спамер на один номер")
 						print("2. Выгрузить номера из TXT файла ")
-					
 						input11= input(Fore.BLUE+"spymer > "+Style.RESET_ALL)
 						if input11 == "1":
 							onesend()
 
 						elif input11 == "2":
 							filesend()
+
+						
 						else:
 							print("Некорректно")
 					
-					elif input1 == "2":
+					elif input1 == "4":
 						checkspamlist()
 
-					elif input1 == "3":
+					elif input1 == "6":
 						addantispam()
 					
-					elif input1 == "4":
+					elif input1 == "2":
 						print("1. Удалить прокси")
 						print("2. Ввести свой прокси")
 						print("3. Сгенерировать прокси")
@@ -1022,8 +1037,8 @@ def MAIN():
 					elif input1 == "5":
 						update()
 					
-					elif input1 == "6":
-						print (Fore.BLUE+"\nДо скорой встречи!)\n"+Style.RESET_ALL)
+					elif input1 == "3":
+						print (Fore.GREEN+"\nДавай пока)\n"+Style.RESET_ALL)
 						exit()
 
 			main()
