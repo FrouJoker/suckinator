@@ -49,3 +49,4 @@ V1.1 - Added proxy change
 V1.2 - Fixed some paragraphs
 V1.3 - Added update function
 V1.4 - Fixed update bugs
+V1.5 - Added IOS supporting
