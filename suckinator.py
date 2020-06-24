@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# spymer v8.0
-# Author: FSystem88
+# spymer v1.4
+# Author: FrouJoker
 import os
 def MAIN():
 	try:
