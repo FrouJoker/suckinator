@@ -675,8 +675,13 @@ def MAIN():
 				os.system('cls' if os.name=='nt' else 'clear')
 				pass
 
-
-			def logo():
+                            def checkver():
+				global info
+				ver = '90'
+				version = requests.post("https://fsystem88.ru/spymer/version.php").json()["version"]
+				if int(ver) < int(version):
+					info=Back.RED+"\nВерсия устарела и надо обновить короче"
+      			def logo():
 				logo = Fore.RED + " ███████████████████████████████████████████ \n █───█────█────█─█─███──█────█─██─█───█────█ \n █─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n █───█────█─██─█─█─████─█─██─█──███───█────█ \n █─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n █─███─█─██────█───█────█────█─██─█───█─█─██ \n ███████████████████v.1.4███████████████████ "+Style.RESET_ALL
 				print(logo)
 				print("\nЧто хочешь?")
