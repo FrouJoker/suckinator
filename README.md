@@ -30,15 +30,15 @@ Suckinator run auto , but if no - go to main dir and write "suckinator"
           
           TERMUX
 
-*apt update 
+*apt update* 
 ---
-*apt upgrade
+*apt upgrade*
 ---
-*apt install git
+*apt install git*
 ---
-*git clone https://github.com/FrouJoker/suckinator
+*git clone https://github.com/FrouJoker/suckinator*
 ---
-*sh ~/suckinator/install.sh
+*sh ~/suckinator/install.sh*
 ---
 
 
