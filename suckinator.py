@@ -847,21 +847,15 @@ def MAIN():
                 os.system('cls' if os.name == 'nt' else 'clear')
                 pass
 
-            def checkver():
-                global info
-                ver = '90'
-                version = requests.post("https://fsystem88.ru/spymer/version.php").json()["version"]
-                if int(ver) < int(version):
-                    info = Back.RED + "\nВерсия устарела и надо обновить короче" + Style.RESET_ALL
 
             def logo():
-                logo = Fore.RED + str("███████████████████████████████████████████ \n "
-									  "█───█────█────█─█─███──█────█─██─█───█────█ \n "
-									  "█─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n "
-									  "█───█────█─██─█─█─████─█─██─█──███───█────█ \n "
-									  "█─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n "
-									  "█─███─█─██────█───█────█────█─██─█───█─█─██ \n "
-									  "███████████████████v.1.5███████████████████ " + Style.RESET_ALL)
+                logo = Fore.YELLOW+ str(" ███████████████████████████████████████████ \n "
+									  " █───█────█────█─█─███──█────█─██─█───█────█ \n "
+									  " █─███─██─█─██─█─█─████─█─██─█─█─██─███─██─█ \n "
+									  " █───█────█─██─█─█─████─█─██─█──███───█────█ \n "
+									  " █─███─█─██─██─█─█─█─██─█─██─█─█─██─███─█─██ \n "
+									  " █─███─█─██────█───█────█────█─██─█───█─█─██ \n "
+									  " ███████████████████v.1.6███████████████████ " + Style.RESET_ALL)
                 print(logo)
                 print("\nЧто хочешь?")
 
@@ -872,51 +866,7 @@ def MAIN():
             # text = randon.randomint(text1,text2,text3,text4)
             # print("-" + text)
 
-            def checkspamlist():
-                global phone
-                global info
-                print("Войдите в телефон для проверки:")
-                phone = input(Fore.BLUE + "spymer > " + Style.RESET_ALL)
-                make7phone()
-                try:
-                    if int(phone):
-                        id = requests.post('https://fsystem88.ru/spymer/json.php', data={'phone': phone}).json()["id"]
-                        if int(id) > 0:
-                            info = Fore.GREEN + "\nТелефон {} находится в антиспам листе.".format(
-                                phone) + Style.RESET_ALL
-                        elif int(id) == 0:
-                            info = Fore.RED + "\nТелефон {} не находится в антиспам листе.".format(
-                                phone) + Style.RESET_ALL
-                except:
-                    info = Fore.RED + "\nНекорректно введен телефон!" + Style.RESET_ALL
 
-            def addantispam():
-                global phone
-                global info
-
-                print("Введите номер:")
-                phone = input(Fore.BLUE + "spymer > " + Style.RESET_ALL)
-                make7phone()
-                try:
-                    if int(phone):
-                        id = requests.post('https://fsystem88.ru/spymer/json.php', data={'phone': phone}).json()["id"]
-                        if int(id) > 0:
-                            info = Fore.GREEN + "\nPhone {} is allready in antispam list.".format(
-                                phone) + Style.RESET_ALL
-                        elif int(id) == 0:
-                            result = \
-                            requests.post('https://fsystem88.ru/spymer/ajax.php', data={'phone': phone}).json()[
-                                "result"]
-                            if result == "no":
-                                info = Fore.RED + "\nТелефон {} НЕ добавлен в антиспам лист.\nВо избежание DDoS подождите час с момента последнего доавления номера в антиспам.".format(
-                                    phone) + Style.RESET_ALL
-                            elif result == "yes":
-                                info = Fore.GREEN + "\nТелефон {} добавлен в антиспам лист.".format(
-                                    phone) + Style.RESET_ALL
-                            elif result == "error":
-                                info = Fore.RED + "Ошибка" + Style.RESET_ALL
-                except:
-                    info = Fore.RED + "\nНекорректно введен телефон!" + Style.RESET_ALL
 
             def updateproxy():
                 global proxy
@@ -1073,9 +1023,12 @@ def MAIN():
                                         id = requests.post('https://fsystem88.ru/spymer/json.php',
                                                            data={'phone': phone}).json()["id"]
                                         if int(id) > 0:
-                                            print(Fore.RED + "\nНомер телефона {} находится в антиспам листе.".format(
-                                                phone) + Style.RESET_ALL)
-                                            exit()
+                                            print(    '\nВеселье началось: {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(
+                                                    phone))
+                                            thread_list = []
+                                            t = threading.Thread(target=n_send, args=(phone, count, proxies))
+                                            thread_list.append(t)
+                                            t.start()
                                         elif int(id) == 0:
                                             print(
                                                 '\nВеселье началось: {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(
@@ -1154,7 +1107,7 @@ def MAIN():
                                                 exit()
                                             elif int(id) == 0:
                                                 print(
-                                                    '\nЗапущен спам на {}.Если хочешь остановить - нажмите Ctrl+Z.'.format(
+                                                    '\nЗапущен спам на {}.Если хочешь остановить - нажми Ctrl+Z.'.format(
                                                         phone))
                                                 thread_list = []
                                                 t = threading.Thread(target=n_send, args=(phone, count, proxies))
@@ -1199,7 +1152,6 @@ def MAIN():
                     clear()
                     logo()
                     print(info)
-                    checkver()
                     print("Proxy: " + Fore.BLUE + "{}".format(proxy) + Style.RESET_ALL)
                     print(Fore.GREEN + "1)То что тебе нужно)")
                     print(Fore.WHITE + "2) Обновить прокси.")
@@ -1224,11 +1176,6 @@ def MAIN():
                         else:
                             print("Некорректно")
 
-                    elif input1 == "5":
-                        checkspamlist()
-
-                    elif input1 == "6":
-                        addantispam()
 
                     elif input1 == "2":
                         print("1. Удалить прокси")
