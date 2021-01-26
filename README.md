@@ -6,7 +6,7 @@ Working in : Russia , weakly in Ukraine and Belarus
 HOW TO INSTALL :
 
 
-           WINDOWS
+           WINDOWS(OLD!)
 
 *1. Install Python 3.8 (IMPORTANT! - set checkbox add to PATH)*
 *2. Run suckinator.exe*
